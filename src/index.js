@@ -7,7 +7,13 @@ import { Provider } from 'react-redux'
 import reducers from './reducers'
 import middleware from './middleware'
 
-const store = createStore(reducers, middleware)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ;
+
+const store = createStore(
+    reducers,
+    /* preloadedState, */ composeEnhancers(
+    middleware
+    ))
 
 ReactDOM.render(
 <Provider store={store}>
