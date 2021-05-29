@@ -6,7 +6,7 @@ export default class NewTweet extends Component {
   };
   handleChange = e => {
     const text = e.target.value;
-    this.setState(() => text);
+    this.setState(() => ({ text }));
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -23,7 +23,7 @@ export default class NewTweet extends Component {
     return (
       <div>
         <h3 className='center'>Compose New Text</h3>
-        <form class='new-tweet' onSubmit='this.handleSubmit'>
+        <form className='new-tweet' onSubmit={this.handleSubmit}>
           <textarea
             name='textare'
             id=''
