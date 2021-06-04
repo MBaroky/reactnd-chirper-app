@@ -33,15 +33,20 @@ export function tweets(state = {}, action) {
       if (tweet.replyingTo !== null) {
         replyingTo = {
           [tweet.replyingTo]: {
-            ...[tweet.replyingTo],
-            replies: [...[tweet.replyingTo].replies, tweet.id],
+            // key: parent tweet's id
+            ...state[tweet.replyingTo], // spreading the parent tweet
+            // CONCLUSION: adding current-new tweet's id to the replies list of parent tweet
+            replies: [
+              ...state[tweet.replyingTo].replies, // spreading all old replies attached to the parent tweet
+              tweet.id, //  adding new tweet's id
+            ],
           },
         };
       }
       return {
-        ...state,
-        ...replyingTo,
-        [tweet.id]: tweet,
+        ...state, // spread state
+        ...replyingTo, // updating the replies array in parent tweet
+        [tweet.id]: tweet, // adding the new tweet
       };
     default:
       return state;

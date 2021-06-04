@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import LoadingBarContainer from "react-redux-loading";
 import { handleInitialData } from "../actions/shared";
 // import Dashboard from "./Dashboard";
-import NewTweet from "./NewTweet";
+// import NewTweet from "./NewTweet";
+import TweetPage from "./TweetPage";
 
 class App extends Component {
   componentDidMount() {
@@ -17,7 +18,9 @@ class App extends Component {
         {loading === true ? (
           <h5 className='center'>Loading...</h5>
         ) : (
-          <NewTweet />
+          <TweetPage
+            match={{ params: { id: "8xf0y6ziyjabvozdd253nd" } }}
+          />
         )}
       </div>
     );

@@ -8,7 +8,7 @@ import {
 } from "react-icons/ti";
 import { handleToggleTweet } from "../actions/tweets";
 
-export class Tweet extends Component {
+class Tweet extends Component {
   toParent = (e, id) => {
     e.preventDefault();
 
